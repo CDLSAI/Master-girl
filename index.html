@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Master Girl Secrets — Love of Romance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050303; --bg2:#0B0505; --wine:#170606; --burgundy:#250707;
+    --red:#A80000; --crimson:#D10B0B; --red-bright:#E31A1A;
+    --gold:#C7A34A; --gold-soft:#D8B95A;
+    --text:#F5F1E8; --text2:#C8C0B4; --muted:#8C8378;
+    --font:'Playfair Display', Georgia, 'Times New Roman', serif;
+    --radius:6px;
+    box-sizing:border-box;
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--font);
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  .label{
+    text-transform:uppercase; letter-spacing:.18em; font-size:.72rem;
+    color:var(--gold); font-weight:600;
+  }
+  .label.red{color:var(--red-bright);}
+  h1,h2,h3{font-weight:600; letter-spacing:.01em;}
+  .italic{font-style:italic; font-weight:500;}
+  section{padding:72px 0;}
+  .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(199,163,74,.35), transparent); margin:32px 0;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; justify-content:center;
+    padding:16px 32px; border-radius:var(--radius);
+    font-family:var(--font); font-size:1rem; letter-spacing:.03em;
+    background:var(--gold-soft); color:#0B0505; border:1px solid var(--gold);
+    cursor:pointer; transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 24px rgba(199,163,74,.18); }
+  .btn-block{ display:flex; width:100%; }
+  .tiny{font-size:.75rem; color:var(--muted); margin-top:10px; text-align:center;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+
+  /* HERO */
+  .hero{
+    background:radial-gradient(120% 80% at 50% -10%, var(--wine) 0%, var(--bg) 60%);
+    padding:64px 0 56px; text-align:center;
+  }
+  .glyph-label{font-size:.8rem; letter-spacing:.25em; color:var(--gold); margin-bottom:14px;}
+  .eyebrow{margin-bottom:20px;}
+  .h1-main{font-size:clamp(2.4rem,9vw,4.2rem); line-height:1.04; letter-spacing:.01em;}
+  .h1-main span{display:block;}
+  .c-gold{color:var(--gold-soft);}
+  .c-off{color:var(--text);}
+  .c-red{color:var(--crimson);}
+  .subtitle{font-size:1.2rem; color:var(--text2); margin:18px 0 36px;}
+
+  /* 16:9 Hero Image Aspect Ratio & Stretching Fixed */
+  .product-shot{
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+    box-shadow: 0 0 0 1px rgba(199,163,74,.25), 0 0 60px rgba(168,0,0,.35), 0 0 120px rgba(168,0,0,.15);
+  }
+  .offer-line{margin-top:36px; font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text2);}
+  .price{font-size:clamp(2.6rem,10vw,3.6rem); color:var(--gold-soft); font-weight:700; margin:8px 0 4px;}
+  .limited{font-size:.75rem; letter-spacing:.2em; color:var(--red-bright); text-transform:uppercase; margin-bottom:22px;}
+
+  /* OFFER STRIP */
+  .offer-strip{
+    background:var(--burgundy); text-align:center; padding:48px 0;
+    border-top:1px solid rgba(199,163,74,.2); border-bottom:1px solid rgba(199,163,74,.2);
+  }
+  .offer-strip h3{font-size:1.6rem; margin:14px 0 4px;}
+  .offer-strip .price{margin:10px 0 22px;}
+
+  /* CURIOSITY */
+  .curiosity{text-align:center;}
+  .curiosity h2{font-size:clamp(1.7rem,5vw,2.4rem); margin:14px 0 22px; max-width:600px; margin-inline:auto;}
+  .curiosity p{color:var(--text2); max-width:520px; margin:0 auto 14px; font-size:1.05rem;}
+
+  /* INSIDE */
+  .inside h2{font-size:clamp(1.7rem,5vw,2.2rem); margin:14px 0 40px;}
+  .row{
+    display:flex; gap:20px; align-items:baseline; padding:22px 0;
+    border-top:1px solid rgba(199,163,74,.18);
+  }
+  .row:last-child{border-bottom:1px solid rgba(199,163,74,.18);}
+  .num{font-size:1.1rem; color:var(--red-bright); min-width:34px; font-weight:600;}
+  .row-title{font-size:1.15rem; margin-bottom:4px;}
+  .row-desc{color:var(--muted); font-size:.92rem;}
+
+  /* HIGHLIGHT */
+  .highlight{
+    background:radial-gradient(100% 100% at 50% 100%, var(--wine) 0%, var(--bg) 65%);
+    text-align:center;
+  }
+  .highlight h2{font-size:clamp(2rem,6vw,3rem); margin:14px 0 18px;}
+  .highlight p{color:var(--text2); max-width:480px; margin:0 auto 32px;}
+
+  /* BONUS */
+  .bonus{background:var(--bg2); text-align:center;}
+  .bonus-frame{
+    max-width:360px; margin:28px auto 0; padding:14px; background:#0A0404;
+    border:1px solid rgba(199,163,74,.3); border-radius:20px;
+    box-shadow:0 0 70px rgba(168,0,0,.3);
+  }
+  
+  /* 1:1 Bonus Image Aspect Ratio & Stretching Fixed */
+  .bonus-img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+  }
+  
+  .bonus-meta{margin-top:32px;}
+  .bonus-meta .price{color:var(--gold-soft);}
+  .bonus-tag{font-size:1.6rem; letter-spacing:.05em; margin-bottom:6px;}
+  .bonus-free{font-size:.9rem; letter-spacing:.15em; color:var(--red-bright); text-transform:uppercase; margin-bottom:18px;}
+  .bonus-copy{color:var(--text2); margin-bottom:28px;}
+
+  /* STACK */
+  .stack h2{text-align:center; font-size:clamp(1.7rem,5vw,2.2rem); margin:14px 0 36px;}
+  .stack-card{
+    border:1px solid rgba(199,163,74,.3); border-radius:12px; padding:32px;
+    background:linear-gradient(180deg, var(--wine), var(--bg2));
+  }
+  .stack-item{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(199,163,74,.15); font-size:1.02rem;}
+  .stack-item span:first-child{color:var(--text);}
+  .stack-item span:last-child{color:var(--gold-soft);}
+  .stack-total{text-align:center; margin-top:26px;}
+  .stack-total .label{display:block; margin-bottom:4px;}
+  .stack-total .price{margin:2px 0 4px;}
+
+  /* COUNTDOWN */
+  .countdown{background:var(--burgundy); text-align:center;}
+  .countdown h2{font-size:clamp(1.5rem,5vw,2rem); margin:14px 0 26px;}
+  .timer{
+    font-size:clamp(2.8rem,10vw,4rem); font-weight:700; color:var(--gold-soft);
+    text-shadow:0 0 30px rgba(209,11,11,.5); letter-spacing:.05em;
+  }
+  .timer.ended{color:var(--red-bright); font-size:1.6rem; text-shadow:none;}
+
+  /* PROOF */
+  .proof h2{text-align:center; font-size:clamp(1.6rem,5vw,2rem); margin:14px 0 30px;}
+  
+  .carousel{display:flex; align-items:center; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding-bottom:8px; -webkit-overflow-scrolling:touch;}
+  .carousel::-webkit-scrollbar{display:none;}
+  
+  /* 16:9 Carousel Image Aspect Ratio Fixed */
+  .carousel img{
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+    scroll-snap-align: center;
+    border-radius: 16px; 
+    border: 1px solid rgba(199,163,74,.2);
+  }
+  
+  .dots{display:flex; justify-content:center; gap:8px; margin-top:16px;}
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--muted); cursor:pointer; transition:background .2s;}
+  .dot.active{background:var(--gold-soft);}
+
+  /* FINAL */
+  .final{
+    background:radial-gradient(120% 90% at 50% 110%, var(--wine) 0%, var(--bg) 60%);
+    text-align:center;
+  }
+  .final h2{font-size:clamp(1.9rem,6vw,2.8rem); margin:14px 0 22px; max-width:600px; margin-inline:auto;}
+  .final .combo{font-size:1.3rem; color:var(--text2); margin-bottom:6px;}
+  .final .price{margin:14px 0 8px;}
+  .final .bonus-free{margin-bottom:28px;}
+
+  footer{padding:36px 24px 100px; text-align:center; color:var(--muted); font-size:.78rem;}
+
+  /* STICKY MOBILE CTA */
+  .sticky-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:var(--burgundy); border-top:1px solid rgba(199,163,74,.3);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    display:none;
+  }
+  .sticky-left .price-sm{color:var(--gold-soft); font-size:1.2rem; font-weight:700; line-height:1.1;}
+  .sticky-left .sub-sm{font-size:.68rem; letter-spacing:.05em; color:var(--text2); text-transform:uppercase;}
+  .sticky-cta .btn{padding:12px 18px; font-size:.9rem; white-space:nowrap;}
+
+  /* SALES NOTIFICATION POPUP */
+  .sales-popup {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 100;
+    background: var(--bg2);
+    border: 1px solid rgba(199, 163, 74, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(168, 0, 0, 0.2);
+    transform: translateX(-150%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+    pointer-events: none;
+    max-width: 320px;
+  }
+  .sales-popup.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  /* DEFAULT USER AVATAR (Instead of image) */
+  .sales-popup-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%; /* Made circular to look like a DP */
+    background: var(--wine);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-soft);
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    flex-shrink: 0;
+  }
+  
+  .sales-popup-text {
+    font-size: 0.85rem;
+    color: var(--text2);
+    line-height: 1.3;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .sales-popup-text span.name {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .sales-popup-text span.time {
+    color: var(--gold-soft);
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  @media (max-width:768px){
+    .sticky-cta{display:flex;}
+    body{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px));}
+    section{padding:56px 0;}
+    
+    /* Notification adjusted for mobile */
+    .sales-popup {
+      bottom: calc(90px + env(safe-area-inset-bottom,0px)); /* Right above sticky CTA */
+      left: 16px;
+      right: 16px;
+      max-width: none;
+      transform: translateY(150%);
+    }
+    .sales-popup.show {
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="glyph-label reveal in">◆ DARK ROMANCE CODE ◆</div>
+    <div class="label eyebrow reveal in">Psychological Blueprint</div>
+    <h1 class="h1-main reveal in">
+      <span class="c-gold">MASTER</span>
+      <span class="c-off">GIRL</span>
+      <span class="c-red">SECRETS</span>
+    </h1>
+    <p class="subtitle italic reveal in">Love of Romance</p>
+
+    <img class="product-shot reveal in" src="https://i.ibb.co/3YcK7jSp/IMG-20260602-WA0000.jpg" alt="Master Girl Secrets — Love of Romance" loading="eager" decoding="async" width="1280" height="720">
+
+    <div class="offer-line reveal">One Complete Guide + 6 Bonus Books Free</div>
+    <div class="price reveal">₹199</div>
+    <div class="limited reveal">Limited-Time Offer</div>
+
+    <a class="btn btn-block reveal" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">GET ACCESS • ₹199 →</a>
+    <p class="tiny">Instant Digital Access</p>
+  </div>
+</section>
+
+<!-- OFFER STRIP -->
+<section class="offer-strip">
+  <div class="wrap">
+    <div class="glyph-label reveal">◆ LIMITED-TIME ACCESS ◆</div>
+    <h3 class="reveal">MASTER GIRL SECRETS<br>+ 6 Bonus Books</h3>
+    <div class="price reveal">₹199</div>
+    <a class="btn reveal" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">GET ACCESS • ₹199 →</a>
+  </div>
+</section>
+
+<!-- CURIOSITY -->
+<section class="curiosity">
+  <div class="wrap">
+    <div class="label reveal">The Psychology of Attraction</div>
+    <h2 class="reveal">Why Does Attraction Feel Different With The Right Person?</h2>
+    <p class="reveal">Attraction isn't only about appearance.</p>
+    <p class="reveal">The way people communicate, respond, create curiosity and build connection can completely change the dynamic.</p>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside">
+  <div class="wrap">
+    <div class="label reveal">Inside The Book</div>
+    <h2 class="reveal">Understand The Psychology Behind Attraction.</h2>
+
+    <div class="row reveal"><div class="num">01</div><div><div class="row-title">Attraction Psychology</div><div class="row-desc">The mental patterns behind genuine interest and desire.</div></div></div>
+    <div class="row reveal"><div class="num">02</div><div><div class="row-title">Flirting &amp; Communication</div><div class="row-desc">Light, natural ways to build tension and warmth.</div></div></div>
+    <div class="row reveal"><div class="num">03</div><div><div class="row-title">Texting &amp; Conversations</div><div class="row-desc">Keeping conversations engaging without overthinking.</div></div></div>
+    <div class="row reveal"><div class="num">04</div><div><div class="row-title">Confidence &amp; Connection</div><div class="row-desc">Presence that comes from calm self-assurance.</div></div></div>
+    <div class="row reveal"><div class="num">05</div><div><div class="row-title">Social Signals</div><div class="row-desc">Reading subtle cues in tone, timing and body language.</div></div></div>
+    <div class="row reveal"><div class="num">06</div><div><div class="row-title">Romance Psychology</div><div class="row-desc">What sustains attraction once a connection begins.</div></div></div>
+  </div>
+</section>
+
+<!-- PRODUCT HIGHLIGHT -->
+<section class="highlight">
+  <div class="wrap">
+    <div class="label reveal">Master Girl Secrets</div>
+    <h2 class="reveal">Words. Timing. Attraction.</h2>
+    <p class="reveal">Explore the psychology behind attraction, communication, flirting and modern romance through one practical digital guide.</p>
+    <a class="btn reveal" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">GET MASTER GIRL SECRETS →</a>
+  </div>
+</section>
+
+<!-- 6 BONUS BOOKS -->
+<section class="bonus">
+  <div class="wrap">
+    <div class="label red reveal">And There's More.</div>
+    <h2 class="reveal" style="margin-top:10px;">Get 6 Bonus Books Free With Your ₹199 Access.</h2>
+
+    <div class="bonus-frame reveal">
+      <img class="bonus-img" src="https://i.ibb.co/0j0PDHBY/Picsart-26-09-26-17-37-05-389.jpg" alt="6 bonus books included free" loading="lazy" decoding="async" width="600" height="600">
+    </div>
+
+    <div class="bonus-meta reveal">
+      <div class="bonus-tag">6 Bonus Books</div>
+      <div class="bonus-free">Free · ₹0 Extra</div>
+      <p class="bonus-copy">One purchase.<br>Seven digital books.</p>
+      <a class="btn" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">CLAIM THE 6 FREE BOOKS →</a>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER STACK -->
+<section class="stack">
+  <div class="wrap">
+    <h2 class="reveal">Your Complete Access</h2>
+    <div class="stack-card reveal">
+      <div class="stack-item"><span>Master Girl Secrets</span><span>✓ Main Ebook</span></div>
+      <div class="stack-item"><span>6 Bonus Books</span><span>✓ Included Free</span></div>
+      <div class="stack-total">
+        <span class="label">Today</span>
+        <div class="price">₹199</div>
+        <span class="label" style="color:var(--red-bright);">6 Books Free</span>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:28px;">
+      <a class="btn" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">GET THE COMPLETE OFFER →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown">
+  <div class="wrap">
+    <div class="label reveal">Limited-Time Access</div>
+    <h2 class="reveal">Your Offer Is Reserved For</h2>
+    <div id="timer" class="timer reveal">23 : 00</div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <h2 class="reveal">Real Reader Feedback</h2>
+    <div class="carousel" id="carousel">
+      <img src="https://i.ibb.co/ZpCy9Bmx/Picsart-26-05-26-19-21-56-304.jpg" alt="Reader feedback screenshot 1" loading="lazy" decoding="async" width="960" height="540">
+      <img src="https://i.ibb.co/gL8CL6MQ/Picsart-26-05-26-19-16-35-411.jpg" alt="Reader feedback screenshot 2" loading="lazy" decoding="async" width="960" height="540">
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- FINAL SALES SECTION -->
+<section class="final">
+  <div class="wrap">
+    <div class="label reveal">The Complete Offer</div>
+    <h2 class="reveal">One Book Was Never The Whole Story.</h2>
+    <div class="combo reveal">Master Girl Secrets<br>+<br>6 Bonus Books</div>
+    <div class="price reveal">₹199</div>
+    <div class="bonus-free reveal">6 Bonus Books — Free</div>
+    <a class="btn reveal" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">GET ACCESS • ₹199 →</a>
+  </div>
+</section>
+
+<footer>Master Girl Secrets — Digital Product. Instant access after purchase.</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="sticky-cta">
+  <div class="sticky-left">
+    <div class="price-sm">₹199</div>
+    <div class="sub-sm">6 Bonus Books Free</div>
+  </div>
+  <a class="btn" href="https://rzp.io/rzp/eV4K9A34" rel="noopener">GET ACCESS →</a>
+</div>
+
+<!-- SALES NOTIFICATION POPUP -->
+<div class="sales-popup" id="salesPopup">
+  <!-- Default User Avatar -->
+  <div class="sales-popup-avatar" id="salesAvatar">R</div>
+  <div class="sales-popup-text">
+    <span class="name" id="salesName">Rahul</span> from <span id="salesCity">Delhi</span> purchased Master Girl Secrets
+    <span class="time" id="salesTime">1 minute ago</span>
+  </div>
+</div>
+
+<script>
+// Reveal on scroll
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  els.forEach(function(e){ io.observe(e); });
+})();
+
+// Countdown timer
+(function(){
+  var KEY = 'mgs_offer_expiry';
+  var DURATION_MS = 23 * 60 * 1000;
+  var el = document.getElementById('timer');
+  var expiry;
+  try{
+    var saved = localStorage.getItem(KEY);
+    expiry = saved ? parseInt(saved, 10) : null;
+    if(!expiry){
+      expiry = Date.now() + DURATION_MS;
+      localStorage.setItem(KEY, String(expiry));
+    }
+  }catch(e){
+    expiry = Date.now() + DURATION_MS;
+  }
+  function tick(){
+    var remaining = expiry - Date.now();
+    if(remaining <= 0){
+      el.textContent = 'OFFER WINDOW ENDED';
+      el.classList.add('ended');
+      clearInterval(int);
+      return;
+    }
+    var m = Math.floor(remaining / 60000);
+    var s = Math.floor((remaining % 60000) / 1000);
+    el.textContent = String(m).padStart(2,'0') + ' : ' + String(s).padStart(2,'0');
+  }
+  tick();
+  var int = setInterval(tick, 1000);
+})();
+
+// Proof carousel dots
+(function(){
+  var carousel = document.getElementById('carousel');
+  var dotsWrap = document.getElementById('dots');
+  var imgs = carousel.querySelectorAll('img');
+  imgs.forEach(function(_, i){
+    var d = document.createElement('div');
+    d.className = 'dot' + (i===0 ? ' active' : '');
+    d.addEventListener('click', function(){
+      imgs[i].scrollIntoView({behavior:'smooth', inline:'center'});
+    });
+    dotsWrap.appendChild(d);
+  });
+  var dots = dotsWrap.querySelectorAll('.dot');
+  carousel.addEventListener('scroll', function(){
+    var idx = Math.round(carousel.scrollLeft / carousel.clientWidth);
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+  }, {passive:true});
+})();
+
+// SALES NOTIFICATION (FOMO) LOGIC
+(function(){
+  const names = ['Aarav', 'Rohan', 'Vikram', 'Aditya', 'Karan', 'Sneha', 'Priya', 'Ananya', 'Riya', 'Kriti', 'Kabir', 'Rahul', 'Neha', 'Pooja', 'Aman', 'Siddharth'];
+  const cities = ['Mumbai', 'Delhi', 'Bangalore', 'Pune', 'Hyderabad', 'Chennai', 'Kolkata', 'Ahmedabad', 'Jaipur', 'Lucknow', 'Chandigarh', 'Indore', 'Noida', 'Gurgaon'];
+  
+  const popup = document.getElementById('salesPopup');
+  const avatarEl = document.getElementById('salesAvatar');
+  const nameEl = document.getElementById('salesName');
+  const cityEl = document.getElementById('salesCity');
+  const timeEl = document.getElementById('salesTime');
+
+  function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function showNotification() {
+    // If it's already showing, don't overlap
+    if (popup.classList.contains('show')) return;
+
+    // Set random data
+    const randomName = getRandom(names);
+    nameEl.textContent = randomName;
+    avatarEl.textContent = randomName.charAt(0).toUpperCase(); // Sets the first letter of the name
+    
+    cityEl.textContent = getRandom(cities);
+    const mins = Math.floor(Math.random() * 12) + 1; // 1 to 12 minutes
+    timeEl.textContent = mins + (mins === 1 ? ' minute ago' : ' minutes ago');
+
+    // Slide in
+    popup.classList.add('show');
+
+    // Slide out after 4.5 seconds
+    setTimeout(() => {
+      popup.classList.remove('show');
+    }, 4500);
+  }
+
+  // First popup appears after 4 seconds of page load
+  setTimeout(() => {
+    showNotification();
+    // Subsequent popups appear every 14 seconds
+    setInterval(showNotification, 14000);
+  }, 4000);
+})();
+</script>
+</body>
+</html>
